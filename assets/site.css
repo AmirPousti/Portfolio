@@ -703,6 +703,16 @@ g[data-node] rect { fill: var(--paper); stroke: var(--rule); rx: 8; }
 .ap-privacy-copy h2:first-child { margin-top: var(--s-5); }
 .ap-privacy-copy p + p { margin-top: 1em; }
 
+/* ---------- 404 easter egg ---------- */
+.ap-lost { margin-top: clamp(56px, 9vw, 112px); max-width: 760px; border-top: 1px solid var(--rule); padding-top: var(--s-5); }
+.ap-lost canvas { display: block; width: 100%; height: auto; cursor: pointer; border-radius: var(--radius-sm); touch-action: manipulation; }
+.ap-lost canvas:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+.ap-lost-bar { display: flex; justify-content: space-between; align-items: center; gap: var(--s-4); flex-wrap: wrap; margin-top: var(--s-3); }
+.ap-lost-status { font-size: .9375rem; color: var(--muted); font-variant-numeric: tabular-nums; margin: 0; }
+.ap-lost-start { font: inherit; font-size: .875rem; font-weight: 500; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.ap-lost-start:hover { color: var(--ink); border-color: var(--ink); }
+@media (hover: none) { .ap-lost-start { display: none; } }
+
 /* ---------- Print ---------- */
 @media print {
   .ap-header, .ap-footer, .ap-consent, .skip-link, .ap-upright-film, .ap-explorer-reset, input[type="range"] { display: none !important; }
