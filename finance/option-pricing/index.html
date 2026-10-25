@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+  <title>Pricing an S&P 500 call with a binomial tree – Amir Pousti</title>
+  <meta name="description" content="Adjust volatility and time to expiry in a dated S&P 500 binomial call-pricing model and inspect every node.">
+  <link rel="canonical" href="https://www.amirpousti.com/finance/option-pricing">
+  <link rel="icon" href="/favicon.ico?v=393a34c421" sizes="16x16 32x32 48x48" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.svg?v=393a34c421" sizes="any" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=393a34c421" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css?v=8dcb887834">
+  <script type="module" src="/assets/vercel-analytics.mjs"></script>
+  <script type="module" src="/assets/google-analytics.mjs?v=944740d9be"></script>
+  <script type="module" src="/assets/site-ui.mjs?v=bc93c44b9f"></script>
+  <script type="module" src="/assets/option-explorer.mjs?v=a2a610b3d5"></script>
+  <meta content="Pricing an S&amp;P 500 call with a binomial tree – Amir Pousti" property="og:title"/>
+  <meta content="Adjust volatility and time to expiry in a dated S&amp;P 500 binomial call-pricing model and inspect every node." property="og:description"/>
+  <meta content="https://www.amirpousti.com/finance/option-pricing" property="og:url"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Amir Pousti" property="og:site_name"/>
+  <meta content="en_GB" property="og:locale"/>
+  <meta content="https://www.amirpousti.com/assets/social-default.jpg" property="og:image"/>
+  <meta content="1200" property="og:image:width"/>
+  <meta content="627" property="og:image:height"/>
+  <meta content="Amir Pousti – Finance and engineering · London" property="og:image:alt"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Pricing an S&amp;P 500 call with a binomial tree – Amir Pousti" name="twitter:title"/>
+  <meta content="Adjust volatility and time to expiry in a dated S&amp;P 500 binomial call-pricing model and inspect every node." name="twitter:description"/>
+  <meta content="https://www.amirpousti.com/assets/social-default.jpg" name="twitter:image"/>
+  <meta content="Amir Pousti – Finance and engineering · London" name="twitter:image:alt"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Amir Pousti","url":"https://www.amirpousti.com/","email":"mailto:amir@amirpousti.com","jobTitle":"Finance and engineering graduate","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Queen Mary University of London"},{"@type":"CollegeOrUniversity","name":"University College London"}],"sameAs":["https://www.linkedin.com/in/amirpousti"]}</script>
+</head>
+<body class="page-option">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <dialog class="ap-consent" id="analytics-consent" aria-labelledby="cookie-heading" aria-describedby="cookie-description" hidden>
+    <div class="ap-consent-copy">
+      <h2 id="cookie-heading">Cookies</h2>
+      <p id="cookie-description">Optional cookies help me understand how this site is used.</p>
+      <a class="ap-consent-privacy" href="/privacy">Privacy policy</a>
+    </div>
+    <div class="ap-consent-actions">
+      <button type="button" id="analytics-allow">Accept</button>
+      <button type="button" id="analytics-decline">Decline</button>
+    </div>
+  </dialog>
+  <p class="sr-only" id="analytics-status" role="status"></p>
+  <header class="ap-header" id="site-header">
+    <a class="ap-wordmark" href="/" aria-label="Amir Pousti – home"><span class="ap-wordmark-full">Amir Pousti</span><span class="ap-wordmark-short" aria-hidden="true">AP</span></a>
+    <nav class="ap-nav" aria-label="Portfolio navigation"><a href="/finance" aria-current="true">Finance</a><a href="/engineering">Engineering</a><a href="/cv">CV</a><a href="/contact">Contact</a></nav>
+  </header>
+  <main id="main" tabindex="-1">
+<article class="ap-page">
+<nav aria-label="Breadcrumb" class="ap-breadcrumb"><a href="/finance">Finance</a><span aria-hidden="true">/</span><span>Option pricing</span></nav>
+<header class="ap-case-hero">
+<div>
+<p class="ap-eyebrow">Derivatives modelling · Group project · Mar 2026</p>
+<h1>Pricing an S&amp;P 500 call with a binomial tree</h1>
+<p class="ap-deck">A small tree makes the assumptions visible. Follow how possible index levels become payoffs, then how those payoffs become a price today.</p>
+<div aria-label="Project details" class="ap-case-meta">
+<div><span>Role</span><strong>Group project</strong></div>
+<div><span>Date</span><strong>Mar 2026</strong></div>
+<div><span>Inputs dated</span><strong>13 Aug 2025</strong></div>
+</div>
+<div class="ap-actions ap-case-downloads">
+<a aria-label="Original report (PDF, 2.1 MB, opens in a new tab)" class="ap-action ap-action-primary ap-action-primary" href="/downloads/finance/sp500-option-pricing-report.pdf" rel="noopener noreferrer" target="_blank">Original report<span aria-hidden="true" class="ap-glyph">↗</span><span class="ap-file-meta">PDF · 2.1 MB</span></a>
+</div>
+</div>
+</header>
+<div class="ap-research-shell">
+<section aria-labelledby="option-heading" class="ap-explorer" id="option-explorer">
+<div class="ap-explorer-heading">
+<div><p class="ap-eyebrow">An assumption at a time</p><h2 id="option-heading">Explore the call value.</h2></div>
+<p class="ap-label">Inputs dated<br/><time datetime="2025-08-13">13 August 2025</time></p>
+</div>
+<p class="ap-explorer-intro">Adjust volatility and time to expiry. The spot, strike and interest rate stay fixed, so you can see what each change does to the same European call.</p>
+<div class="ap-dcf-layout">
+<form class="ap-dcf-controls" hidden="" id="option-controls">
+<div class="ap-dcf-mobile-result"><span>Call value · index points</span><strong id="option-mobile-price">281.85</strong></div>
+<div class="ap-rate-control">
+<div><label for="option-volatility">Annual volatility</label><span id="option-volatility-value">9.63%</span></div>
+<input aria-describedby="option-volatility-hint" id="option-volatility" max="2" min="0.5" step="0.05" type="range" value="1"/>
+<div aria-hidden="true" class="ap-range-extents"><span>4.81%</span><span>19.26%</span></div>
+<p id="option-volatility-hint">Half to double the report’s 9.6278% issuance estimate.</p>
+</div>
+<div class="ap-rate-control">
+<div><label for="option-months">Time to expiry</label><span id="option-months-value">6 months</span></div>
+<input id="option-months" max="12" min="1" step="1" type="range" value="6"/>
+<div aria-hidden="true" class="ap-range-extents"><span>1 month</span><span>12 months</span></div>
+</div>
+<div class="ap-option-step-control"><label for="option-steps">Tree steps</label><select id="option-steps"><option value="1">One step</option><option value="2">Two steps</option></select></div>
+<button class="ap-explorer-reset" type="reset">Reset to report inputs <span aria-hidden="true">↺</span></button>
+</form>
+<div id="option-fallback"><p>The original one-step scenario is shown. Enable JavaScript to adjust its assumptions.</p><p class="ap-explorer-note">9.6278% annual volatility · 6 months to expiry.</p></div>
+<div class="ap-dcf-result" id="option-result">
+<p class="ap-label" id="option-scenario">Original one-step inputs</p>
+<p class="ap-dcf-price"><span id="option-price">281.85</span><span>Index points · model value</span></p>
+<p class="ap-option-difference" id="option-difference">Reproduces the report’s 281.85 headline.</p>
+<dl class="ap-source-cells ap-option-facts">
+<div><dt>Spot / strike</dt><dd>6,466.58 / 6,466.58</dd></div>
+<div><dt>Risk-free rate</dt><dd>3.9984% a year</dd></div>
+<div><dt>Risk-neutral up weight</dt><dd id="option-probability">63.12%</dd></div>
+<div><dt>Up / down factors</dt><dd id="option-factors">1.07045 / 0.93419</dd></div>
+</dl>
+<p class="ap-explorer-note">The up weight is a pricing input, not a forecast of the market’s next move. This dated model has no live prices.</p>
+</div>
+</div>
+<p hidden="" id="option-error" role="alert"></p>
+<p aria-atomic="true" class="sr-only" id="option-announcement" role="status"></p>
+<div class="ap-option-tree-heading"><h3>The price, branch by branch</h3><p>S = index level · C = call value</p></div>
+<p class="ap-explorer-note ap-option-scroll-hint">On a small screen, swipe across the tree or open the node table.</p>
+<div data-option-tree="1"><div aria-label="1-step pricing tree; scroll horizontally on small screens" class="ap-option-tree-scroll" role="region" tabindex="0"><svg aria-labelledby="option-tree-title-1 option-tree-desc-1" role="img" viewbox="0 0 740 290"><title id="option-tree-title-1">1-step European call tree</title><desc id="option-tree-desc-1">S is the index level; C is the call value in index points. Exact node values for the selected scenario are also available in the table below.</desc><g class="ap-tree-branches"><line x1="106.0" x2="624.0" y1="145.0" y2="221.0"></line><line x1="106.0" x2="624.0" y1="145.0" y2="69.0"></line></g><g data-node="0-0" transform="translate(100.0,145.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 6,466.58</text><text class="ap-tree-call" y="-13">C 281.85</text></g><g data-node="1-1" transform="translate(630.0,69.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 6,922.15</text><text class="ap-tree-call" y="-13">C 455.57</text></g><g data-node="1-0" transform="translate(630.0,221.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 6,040.99</text><text class="ap-tree-call" y="-13">C 0.00</text></g><text class="ap-tree-time" data-time-step="0" x="100.0" y="281">Today</text><text class="ap-tree-time" data-time-step="1" x="630.0" y="281">6 months</text></svg></div><details class="ap-explorer-details"><summary>Inspect every node</summary><div aria-label="Option tree node values" class="ap-table-scroll" role="region" tabindex="0"><table class="ap-option-table"><caption>Current scenario · Index points, before any contract multiplier. At expiry, C is the payoff.</caption><thead><tr><th scope="col">Path</th><th scope="col">Months</th><th scope="col">Index (S)</th><th scope="col">Call (C)</th></tr></thead><tbody><tr data-node="0-0"><th scope="row">Start</th><td class="ap-node-time">0</td><td class="ap-node-spot">6,466.58</td><td class="ap-node-call">281.85</td></tr><tr data-node="1-1"><th scope="row">Up</th><td class="ap-node-time">6</td><td class="ap-node-spot">6,922.15</td><td class="ap-node-call">455.57</td></tr><tr data-node="1-0"><th scope="row">Down</th><td class="ap-node-time">6</td><td class="ap-node-spot">6,040.99</td><td class="ap-node-call">0.00</td></tr></tbody></table></div></details></div><div data-option-tree="2" hidden=""><div aria-label="2-step pricing tree; scroll horizontally on small screens" class="ap-option-tree-scroll" role="region" tabindex="0"><svg aria-labelledby="option-tree-title-2 option-tree-desc-2" role="img" viewbox="0 0 740 410"><title id="option-tree-title-2">2-step European call tree</title><desc id="option-tree-desc-2">S is the index level; C is the call value in index points. Exact node values for the selected scenario are also available in the table below.</desc><g class="ap-tree-branches"><line x1="106.0" x2="359.0" y1="205.0" y2="281.0"></line><line x1="106.0" x2="359.0" y1="205.0" y2="129.0"></line><line x1="371.0" x2="624.0" y1="129.0" y2="205.0"></line><line x1="371.0" x2="624.0" y1="129.0" y2="53.0"></line><line x1="371.0" x2="624.0" y1="281.0" y2="357.0"></line><line x1="371.0" x2="624.0" y1="281.0" y2="205.0"></line></g><g data-node="0-0" transform="translate(100.0,205.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 6,466.58</text><text class="ap-tree-call" y="-13">C 224.72</text></g><g data-node="1-1" transform="translate(365.0,129.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 6,785.49</text><text class="ap-tree-call" y="-13">C 383.23</text></g><g data-node="1-0" transform="translate(365.0,281.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 6,162.66</text><text class="ap-tree-call" y="-13">C 0.00</text></g><g data-node="2-2" transform="translate(630.0,53.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 7,120.13</text><text class="ap-tree-call" y="-13">C 653.55</text></g><g data-node="2-1" transform="translate(630.0,205.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 6,466.58</text><text class="ap-tree-call" y="-13">C 0.00</text></g><g data-node="2-0" transform="translate(630.0,357.0)"><circle r="4"></circle><rect height="42" width="168" x="-84" y="-51"></rect><text class="ap-tree-spot" y="-31">S 5,873.02</text><text class="ap-tree-call" y="-13">C 0.00</text></g><text class="ap-tree-time" data-time-step="0" x="100.0" y="401">Today</text><text class="ap-tree-time" data-time-step="1" x="365.0" y="401">3 months</text><text class="ap-tree-time" data-time-step="2" x="630.0" y="401">6 months</text></svg></div><details class="ap-explorer-details"><summary>Inspect every node</summary><div aria-label="Option tree node values" class="ap-table-scroll" role="region" tabindex="0"><table class="ap-option-table"><caption>Current scenario · Index points, before any contract multiplier. At expiry, C is the payoff.</caption><thead><tr><th scope="col">Path</th><th scope="col">Months</th><th scope="col">Index (S)</th><th scope="col">Call (C)</th></tr></thead><tbody><tr data-node="0-0"><th scope="row">Start</th><td class="ap-node-time">0</td><td class="ap-node-spot">6,466.58</td><td class="ap-node-call">224.72</td></tr><tr data-node="1-1"><th scope="row">Up</th><td class="ap-node-time">3</td><td class="ap-node-spot">6,785.49</td><td class="ap-node-call">383.23</td></tr><tr data-node="1-0"><th scope="row">Down</th><td class="ap-node-time">3</td><td class="ap-node-spot">6,162.66</td><td class="ap-node-call">0.00</td></tr><tr data-node="2-2"><th scope="row">Up / up</th><td class="ap-node-time">6</td><td class="ap-node-spot">7,120.13</td><td class="ap-node-call">653.55</td></tr><tr data-node="2-1"><th scope="row">Up / down</th><td class="ap-node-time">6</td><td class="ap-node-spot">6,466.58</td><td class="ap-node-call">0.00</td></tr><tr data-node="2-0"><th scope="row">Down / down</th><td class="ap-node-time">6</td><td class="ap-node-spot">5,873.02</td><td class="ap-node-call">0.00</td></tr></tbody></table></div></details></div>
+<details class="ap-explorer-details">
+<summary>Assumptions, formulas and source reconciliation</summary>
+<div class="ap-model-notes">
+<p><strong>Starting point.</strong> The March 2026 group report’s one-step example uses spot and strike of 6,466.58, 9.6278% annual volatility, a 3.9984% annual risk-free rate and six months to expiry, dated 13 August 2025. Its full-sample volatility of 18.57% belongs to a different estimation period.</p>
+<p><strong>One consistent convention.</strong> For each step Δt = T / n: u = exp(σ√Δt), d = 1/u, R = exp(rΔt) and q = (R − d)/(u − d). At expiry C = max(S − K, 0); at earlier nodes C = [qC<sub>up</sub> + (1 − q)C<sub>down</sub>]/R. Rates are continuously compounded throughout, with constant volatility and no dividends.</p>
+<p><strong>Reconciliation.</strong> The report mixes an effective-annual probability formula with continuous discounting, and its printed probability labels disagree. Continuous compounding throughout reproduces 281.8541, rounded to the reported 281.85. The explorer recalculates the probabilities and every node instead of copying those inconsistent labels.</p>
+<p><strong>Two-step boundary.</strong> Switching to two steps keeps the same dated inputs. It does not reproduce the report’s later 252.20 and 256.59 examples, which use different, partly ex-post volatility and rate estimates. One or two steps illustrate the mechanics; they are a coarse approximation, not a calibrated market option quote. Values are index points with no contract multiplier.</p>
+<p>Source: <a aria-label="original report, PDF pages 5–6, equations 3–6 (PDF, 2.1 MB, opens in a new tab)" href="/downloads/finance/sp500-option-pricing-report.pdf#page=5" rel="noopener noreferrer" target="_blank">original report, PDF pages 5–6, equations 3–6<span aria-hidden="true" class="ap-glyph">↗</span><span class="ap-file-meta">PDF · 2.1 MB</span></a>. Pricing background: <a href="https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/valuing-derivative-one-period-binomial-model" rel="noopener noreferrer" target="_blank">CFA Institute’s one-period binomial model<span aria-hidden="true" class="ap-glyph">↗</span><span class="sr-only"> (opens in a new tab)</span></a>.</p>
+</div>
+</details>
+</section>
+<script id="option-data" type="application/json">{"asOf":"2025-08-13","reportDate":"2026-03","source":"downloads/finance/sp500-option-pricing-report.pdf","sourceSha256":"da05a136910d23aa77a1869cba15d4605ce5b5eb69cd8ab9b00c845e9e195c29","sourcePages":"PDF pages 5\u20136 (printed pages 4\u20135), equations 3\u20136","spot":6466.58,"strike":6466.58,"rate":0.039984,"volatility":0.096278,"months":6,"steps":1,"reportedPrice":281.85,"convention":"CRR European call; continuously compounded risk-free rate; constant volatility; no dividends; index points without a contract multiplier.","base":{"price":281.8540744380914,"probability":0.6311796981009771,"up":1.0704496851469651,"down":0.9341868318291925,"growth":1.020193178448682,"nodes":[[{"step":0,"upMoves":0,"underlying":6466.58,"value":281.8540744380914}],[{"step":1,"upMoves":0,"underlying":6040.9938829700195,"value":0.0},{"step":1,"upMoves":1,"underlying":6922.1485249776615,"value":455.5685249776616}]]}}</script>
+<section aria-labelledby="option-lessons" class="ap-report-section">
+<p class="ap-label">Decisions and lessons · Group project</p>
+<h2 id="option-lessons">Keep the information date in view.</h2>
+<dl class="ap-lessons">
+<div><dt>Decision</dt><dd>The report compared simple CRR trees with a later time-varying example to examine how volatility and rates affect the result.</dd></div>
+<div><dt>Lesson</dt><dd>A model fitted with information realised after issuance answers a different question from a price formed on the issuance date. A more elaborate tree does not remove that distinction.</dd></div>
+<div><dt>Next check</dt><dd>A further study would estimate every input using only information available at issuance, use one rate convention throughout and test convergence with more time steps.</dd></div>
+</dl>
+</section>
+<nav aria-label="Case study navigation" class="ap-case-end-nav">
+<a class="ap-text-link" href="/finance"><span aria-hidden="true" class="ap-glyph ap-glyph-back">←</span>All finance projects</a>
+<a class="ap-text-link" href="/finance/ferrari">Next: Ferrari: where scarcity drives value<span aria-hidden="true" class="ap-glyph">→</span></a>
+</nav>
+</div>
+</article>
+  </main>
+  <footer class="ap-footer">
+    <a class="ap-wordmark" href="/">Amir Pousti</a>
+    <span>London, 2026</span>
+    <nav aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/finance">Finance</a>
+      <a href="/engineering">Engineering</a>
+      <a href="/cv">CV</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <button class="ap-analytics-settings" id="analytics-settings" type="button" aria-controls="analytics-consent" aria-haspopup="dialog" hidden>Cookie settings</button>
+    </nav>
+  </footer>
+</body>
+</html>

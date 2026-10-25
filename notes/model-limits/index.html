@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+  <title>What a simulation can establish – Amir Pousti</title>
+  <meta name="description" content="Lessons from a Formula Student upright: mesh convergence, engineering trade-offs and physical validation.">
+  <link rel="canonical" href="https://www.amirpousti.com/notes/model-limits">
+  <link rel="icon" href="/favicon.ico?v=393a34c421" sizes="16x16 32x32 48x48" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.svg?v=393a34c421" sizes="any" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=393a34c421" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css?v=8dcb887834">
+  <script type="module" src="/assets/vercel-analytics.mjs"></script>
+  <script type="module" src="/assets/google-analytics.mjs?v=944740d9be"></script>
+  <script type="module" src="/assets/site-ui.mjs?v=bc93c44b9f"></script>
+  <meta content="What a simulation can establish – Amir Pousti" property="og:title"/>
+  <meta content="Lessons from a Formula Student upright: mesh convergence, engineering trade-offs and physical validation." property="og:description"/>
+  <meta content="https://www.amirpousti.com/notes/model-limits" property="og:url"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Amir Pousti" property="og:site_name"/>
+  <meta content="en_GB" property="og:locale"/>
+  <meta content="https://www.amirpousti.com/assets/social-default.jpg" property="og:image"/>
+  <meta content="1200" property="og:image:width"/>
+  <meta content="627" property="og:image:height"/>
+  <meta content="Amir Pousti – Finance and engineering · London" property="og:image:alt"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="What a simulation can establish – Amir Pousti" name="twitter:title"/>
+  <meta content="Lessons from a Formula Student upright: mesh convergence, engineering trade-offs and physical validation." name="twitter:description"/>
+  <meta content="https://www.amirpousti.com/assets/social-default.jpg" name="twitter:image"/>
+  <meta content="Amir Pousti – Finance and engineering · London" name="twitter:image:alt"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Amir Pousti","url":"https://www.amirpousti.com/","email":"mailto:amir@amirpousti.com","jobTitle":"Finance and engineering graduate","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Queen Mary University of London"},{"@type":"CollegeOrUniversity","name":"University College London"}],"sameAs":["https://www.linkedin.com/in/amirpousti"]}</script>
+</head>
+<body class="page-simulation-note">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <dialog class="ap-consent" id="analytics-consent" aria-labelledby="cookie-heading" aria-describedby="cookie-description" hidden>
+    <div class="ap-consent-copy">
+      <h2 id="cookie-heading">Cookies</h2>
+      <p id="cookie-description">Optional cookies help me understand how this site is used.</p>
+      <a class="ap-consent-privacy" href="/privacy">Privacy policy</a>
+    </div>
+    <div class="ap-consent-actions">
+      <button type="button" id="analytics-allow">Accept</button>
+      <button type="button" id="analytics-decline">Decline</button>
+    </div>
+  </dialog>
+  <p class="sr-only" id="analytics-status" role="status"></p>
+  <header class="ap-header" id="site-header">
+    <a class="ap-wordmark" href="/" aria-label="Amir Pousti – home"><span class="ap-wordmark-full">Amir Pousti</span><span class="ap-wordmark-short" aria-hidden="true">AP</span></a>
+    <nav class="ap-nav" aria-label="Portfolio navigation"><a href="/finance">Finance</a><a href="/engineering">Engineering</a><a href="/cv">CV</a><a href="/contact">Contact</a></nav>
+  </header>
+  <main id="main" tabindex="-1">
+<article class="ap-note-page">
+<nav aria-label="Breadcrumb" class="ap-breadcrumb"><a href="/#notes">Notes</a><span aria-hidden="true">/</span><span>Engineering judgement</span></nav>
+<header class="ap-page-hero">
+<p class="ap-eyebrow">Engineering judgement · <time datetime="2026-09-08">8 September 2026</time></p>
+<h1>What a simulation can establish</h1>
+<p class="ap-deck">A model can support a design decision while leaving its physical performance unproven. The distinction matters.</p>
+</header>
+<div class="ap-note-layout ap-container">
+<div class="ap-note-context"><p class="ap-label">From the project</p><p>Formula Student upright<br/>Individual dissertation<br/>Apr 2025</p><a href="/engineering/formula-student-upright">Read the case study</a></div>
+<div class="ap-note-body">
+<p>My upright dissertation started with supplied vehicle geometry and parameters, then translated vehicle-level assumptions into component loads. The finite-element model made it possible to compare designs under those loads. Its results remained conditional on how the problem had been represented.</p>
+<h2>First, test the numerical answer</h2>
+<p>I compared six mesh refinements before choosing a 0.75 mm mesh with 729,174 elements. Watching stress and deformation change with refinement helped judge whether a geometry comparison was being driven by the design or by the numerical resolution.</p>
+<p>That check addresses the discretisation. It cannot establish whether an assumed load matches a kerb strike, whether a constraint represents the assembly accurately or how repeated loading will affect fatigue life.</p>
+<h2>Then, test the decision</h2>
+<p>Iteration 6 was the lightest modelled design. It saved another 10.59 g beyond Iteration 5, but its estimated machining cost increased by £34.76 and maximum deformation rose from 0.08923 mm to 0.11245 mm. The comparison made the marginal trade-off visible.</p>
+<p>I recommended Iteration 5: an 18.43% mass reduction with a modelled safety factor of 4.80 and the lower machining estimate. The recommendation followed the project’s combined constraints; it was not simply the geometry with the smallest mass.</p>
+<h2>Finally, test the physical component</h2>
+<p>A fatigue model, a prototype and bench measurements of stiffness and strain would test questions the static analysis leaves open. Instrumented track loads would also let the design assumptions be replaced with measured evidence. These are proposed next steps, not completed validation.</p>
+<p>The lesson I take from the project is to keep three questions separate: is the calculation stable, is the trade-off sensible and does the physical component behave as expected? Each needs its own evidence.</p>
+<div class="ap-note-source"><p><strong>Source and scope.</strong> Apr 2025 dissertation: <a href="/engineering/formula-student-upright#formula-mesh">mesh-convergence results</a>, <a href="/engineering/formula-student-upright#upright-explorer">three-design comparison</a> and <a href="/engineering/formula-student-upright#formula-limitations">evidence boundaries</a>. The <a aria-label="original report (PDF, 5.5 MB, opens in a new tab)" href="/downloads/engineering/formula-student-upright-report.pdf" rel="noopener noreferrer" target="_blank">original report<span aria-hidden="true" class="ap-glyph">↗</span><span class="ap-file-meta">PDF · 5.5 MB</span></a> is available in full. All performance figures are simulation outputs; machining costs are point-in-time estimates.</p></div>
+<nav aria-label="Related reading" class="ap-note-next"><a href="/engineering/formula-student-upright#upright-explorer">Compare the three upright designs<span aria-hidden="true" class="ap-glyph">→</span></a><a href="/notes">All research notes<span aria-hidden="true" class="ap-glyph">→</span></a></nav>
+</div>
+</div>
+</article>
+  </main>
+  <footer class="ap-footer">
+    <a class="ap-wordmark" href="/">Amir Pousti</a>
+    <span>London, 2026</span>
+    <nav aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/finance">Finance</a>
+      <a href="/engineering">Engineering</a>
+      <a href="/cv">CV</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <button class="ap-analytics-settings" id="analytics-settings" type="button" aria-controls="analytics-consent" aria-haspopup="dialog" hidden>Cookie settings</button>
+    </nav>
+  </footer>
+</body>
+</html>

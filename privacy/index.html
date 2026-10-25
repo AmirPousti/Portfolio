@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+  <title>Privacy and analytics – Amir Pousti</title>
+  <meta name="description" content="How this portfolio uses Vercel Web Analytics and optional Google Analytics and how to change your choice.">
+  <link rel="canonical" href="https://www.amirpousti.com/privacy">
+  <link rel="icon" href="/favicon.ico?v=393a34c421" sizes="16x16 32x32 48x48" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.svg?v=393a34c421" sizes="any" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=393a34c421" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css?v=8dcb887834">
+  <script type="module" src="/assets/vercel-analytics.mjs"></script>
+  <script type="module" src="/assets/google-analytics.mjs?v=944740d9be"></script>
+  <script type="module" src="/assets/site-ui.mjs?v=bc93c44b9f"></script>
+  <meta content="Privacy and analytics – Amir Pousti" property="og:title"/>
+  <meta content="How this portfolio uses Vercel Web Analytics and optional Google Analytics and how to change your choice." property="og:description"/>
+  <meta content="https://www.amirpousti.com/privacy" property="og:url"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Amir Pousti" property="og:site_name"/>
+  <meta content="en_GB" property="og:locale"/>
+  <meta content="https://www.amirpousti.com/assets/social-default.jpg" property="og:image"/>
+  <meta content="1200" property="og:image:width"/>
+  <meta content="627" property="og:image:height"/>
+  <meta content="Amir Pousti – Finance and engineering · London" property="og:image:alt"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Privacy and analytics – Amir Pousti" name="twitter:title"/>
+  <meta content="How this portfolio uses Vercel Web Analytics and optional Google Analytics and how to change your choice." name="twitter:description"/>
+  <meta content="https://www.amirpousti.com/assets/social-default.jpg" name="twitter:image"/>
+  <meta content="Amir Pousti – Finance and engineering · London" name="twitter:image:alt"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Amir Pousti","url":"https://www.amirpousti.com/","email":"mailto:amir@amirpousti.com","jobTitle":"Finance and engineering graduate","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Queen Mary University of London"},{"@type":"CollegeOrUniversity","name":"University College London"}],"sameAs":["https://www.linkedin.com/in/amirpousti"]}</script>
+</head>
+<body class="page-privacy">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <dialog class="ap-consent" id="analytics-consent" aria-labelledby="cookie-heading" aria-describedby="cookie-description" hidden>
+    <div class="ap-consent-copy">
+      <h2 id="cookie-heading">Cookies</h2>
+      <p id="cookie-description">Optional cookies help me understand how this site is used.</p>
+      <a class="ap-consent-privacy" href="/privacy">Privacy policy</a>
+    </div>
+    <div class="ap-consent-actions">
+      <button type="button" id="analytics-allow">Accept</button>
+      <button type="button" id="analytics-decline">Decline</button>
+    </div>
+  </dialog>
+  <p class="sr-only" id="analytics-status" role="status"></p>
+  <header class="ap-header" id="site-header">
+    <a class="ap-wordmark" href="/" aria-label="Amir Pousti – home"><span class="ap-wordmark-full">Amir Pousti</span><span class="ap-wordmark-short" aria-hidden="true">AP</span></a>
+    <nav class="ap-nav" aria-label="Portfolio navigation"><a href="/finance">Finance</a><a href="/engineering">Engineering</a><a href="/cv">CV</a><a href="/contact">Contact</a></nav>
+  </header>
+  <main id="main" tabindex="-1">
+<section class="ap-page-hero">
+<p class="ap-eyebrow">Updated 8 September 2026</p>
+<h1>Privacy and analytics.</h1>
+<p class="ap-deck">How I understand visits to this portfolio and the choices you have.</p>
+</section>
+<div class="ap-container ap-privacy-copy">
+<h2>Optional Google Analytics</h2>
+<p>If you choose Accept in the cookie pop-up, Google Analytics uses cookies to measure visits, pages viewed and interactions such as outbound links and downloads. Its reports can include approximate countries and cities inferred from an internet connection, along with device and browser information. They do not tell me a visitor’s name or exact address.</p>
+<p>The Google tag stays unloaded until you allow it. Declining leaves it off. Advertising storage, advertising personalisation and Google signals are disabled in this site’s configuration. No browser GPS access is requested.</p>
+<p>Your choice is saved in this browser for up to 180 days. Use <strong>Cookie settings</strong> in the footer to change it at any time. Withdrawing permission disables further Google Analytics collection and removes this site’s Google Analytics cookies from your browser; it does not delete data already sent to Google. If your browser cannot save the choice, you may be asked again on the next page.</p>
+<p>Read <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer" target="_blank">how Google uses information from sites that use its services<span aria-hidden="true" class="ap-glyph">↗</span><span class="sr-only"> (opens in a new tab)</span></a> and <a href="https://support.google.com/analytics/answer/11593727" rel="noopener noreferrer" target="_blank">Google Analytics’ data collection information<span aria-hidden="true" class="ap-glyph">↗</span><span class="sr-only"> (opens in a new tab)</span></a>.</p>
+<h2>Vercel Web Analytics</h2>
+<p>This website also uses Vercel’s cookie-free Web Analytics for aggregate visitor counts, page views, referrers, countries and device information. This runs separately from the optional Google Analytics choice. See <a href="https://vercel.com/docs/analytics/privacy-policy" rel="noopener noreferrer" target="_blank">Vercel’s explanation of the data it collects<span aria-hidden="true" class="ap-glyph">↗</span><span class="sr-only"> (opens in a new tab)</span></a>.</p>
+<h2>Contact and external links</h2>
+<p>Email links open your own email application. LinkedIn and other external sites have their own privacy practices. For questions about this portfolio or its analytics, <a href="/contact">contact me</a>.</p>
+</div>
+  </main>
+  <footer class="ap-footer">
+    <a class="ap-wordmark" href="/">Amir Pousti</a>
+    <span>London, 2026</span>
+    <nav aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/finance">Finance</a>
+      <a href="/engineering">Engineering</a>
+      <a href="/cv">CV</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <button class="ap-analytics-settings" id="analytics-settings" type="button" aria-controls="analytics-consent" aria-haspopup="dialog" hidden>Cookie settings</button>
+    </nav>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+  <title>Why valuation methods disagree – Amir Pousti</title>
+  <meta name="description" content="A reflection on the Lennox group valuation: cash-flow definitions, peer comparisons, dividends and source reconciliation.">
+  <link rel="canonical" href="https://www.amirpousti.com/notes/valuation-methods">
+  <link rel="icon" href="/favicon.ico?v=393a34c421" sizes="16x16 32x32 48x48" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.svg?v=393a34c421" sizes="any" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=393a34c421" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css?v=8dcb887834">
+  <script type="module" src="/assets/vercel-analytics.mjs"></script>
+  <script type="module" src="/assets/google-analytics.mjs?v=944740d9be"></script>
+  <script type="module" src="/assets/site-ui.mjs?v=bc93c44b9f"></script>
+  <meta content="Why valuation methods disagree – Amir Pousti" property="og:title"/>
+  <meta content="A reflection on the Lennox group valuation: cash-flow definitions, peer comparisons, dividends and source reconciliation." property="og:description"/>
+  <meta content="https://www.amirpousti.com/notes/valuation-methods" property="og:url"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Amir Pousti" property="og:site_name"/>
+  <meta content="en_GB" property="og:locale"/>
+  <meta content="https://www.amirpousti.com/assets/social-default.jpg" property="og:image"/>
+  <meta content="1200" property="og:image:width"/>
+  <meta content="627" property="og:image:height"/>
+  <meta content="Amir Pousti – Finance and engineering · London" property="og:image:alt"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Why valuation methods disagree – Amir Pousti" name="twitter:title"/>
+  <meta content="A reflection on the Lennox group valuation: cash-flow definitions, peer comparisons, dividends and source reconciliation." name="twitter:description"/>
+  <meta content="https://www.amirpousti.com/assets/social-default.jpg" name="twitter:image"/>
+  <meta content="Amir Pousti – Finance and engineering · London" name="twitter:image:alt"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Amir Pousti","url":"https://www.amirpousti.com/","email":"mailto:amir@amirpousti.com","jobTitle":"Finance and engineering graduate","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Queen Mary University of London"},{"@type":"CollegeOrUniversity","name":"University College London"}],"sameAs":["https://www.linkedin.com/in/amirpousti"]}</script>
+</head>
+<body class="page-valuation-note">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <dialog class="ap-consent" id="analytics-consent" aria-labelledby="cookie-heading" aria-describedby="cookie-description" hidden>
+    <div class="ap-consent-copy">
+      <h2 id="cookie-heading">Cookies</h2>
+      <p id="cookie-description">Optional cookies help me understand how this site is used.</p>
+      <a class="ap-consent-privacy" href="/privacy">Privacy policy</a>
+    </div>
+    <div class="ap-consent-actions">
+      <button type="button" id="analytics-allow">Accept</button>
+      <button type="button" id="analytics-decline">Decline</button>
+    </div>
+  </dialog>
+  <p class="sr-only" id="analytics-status" role="status"></p>
+  <header class="ap-header" id="site-header">
+    <a class="ap-wordmark" href="/" aria-label="Amir Pousti – home"><span class="ap-wordmark-full">Amir Pousti</span><span class="ap-wordmark-short" aria-hidden="true">AP</span></a>
+    <nav class="ap-nav" aria-label="Portfolio navigation"><a href="/finance">Finance</a><a href="/engineering">Engineering</a><a href="/cv">CV</a><a href="/contact">Contact</a></nav>
+  </header>
+  <main id="main" tabindex="-1">
+<article class="ap-note-page">
+<nav aria-label="Breadcrumb" class="ap-breadcrumb"><a href="/#notes">Notes</a><span aria-hidden="true">/</span><span>Valuation</span></nav>
+<header class="ap-page-hero">
+<p class="ap-eyebrow">Valuation · <time datetime="2026-09-08">8 September 2026</time></p>
+<h1>Why valuation methods disagree</h1>
+<p class="ap-deck">A weighted average can hide the most useful part of a valuation: why the methods disagree in the first place.</p>
+</header>
+<div class="ap-note-layout ap-container">
+<div class="ap-note-context"><p class="ap-label">From the project</p><p>Lennox International<br/>Group valuation study<br/>Mar 2026</p><a aria-label="Read the original report (PDF, 3.2 MB, opens in a new tab)" href="/downloads/finance/lennox-valuation-report.pdf#page=9" rel="noopener noreferrer" target="_blank">Read the original report<span aria-hidden="true" class="ap-glyph">↗</span><span class="ap-file-meta">PDF · 3.2 MB</span></a></div>
+<div class="ap-note-body">
+<p>The Lennox report combined DCF, two peer-multiple approaches and a dividend model. Its reported estimates ranged from $101.59 to $634.51 per share. That spread is more informative than the blended $523.81 on its own.</p>
+<h2>Start with what each method measures</h2>
+<p>The DCF values forecast cash available to the firm, then bridges enterprise value to equity. In the report, terminal value contributes roughly three-quarters of enterprise value. Small changes in the long-run assumptions can therefore move the answer substantially.</p>
+<p>Multiples ask how the market prices comparable earnings or operating profit. The reported EV/EBITDA and P/E estimates were $634.51 and $631.12. Their agreement does not make peer selection, business mix or the measurement period irrelevant.</p>
+<p>The dividend model produced $101.59 under its specified payout path. A low current payout and the role of share repurchases help explain why that path captures a different picture of distributions. The result alone does not establish that the shares are overvalued.</p>
+<h2>Reconcile before combining</h2>
+<p>There is also a source issue to resolve. For 2025, the report lists NOPAT of $845m, depreciation of $97m, capital expenditure of $180m and a $75m working-capital outflow. Under its stated FCFF formula, those inputs give $687m; the table shows $1,047m. That difference needs reconciliation before the DCF or blended target can be treated as verified.</p>
+<p>My takeaway is a sequence: reconcile the cash flows, align the dates and capital structure, then examine what each method assumes. Weighting the outputs is a later judgement. It cannot repair an inconsistent input table or make a weak comparison stronger.</p>
+<div class="ap-note-source"><p><strong>Source and scope.</strong> This reflection uses the Mar 2026 group report’s reported estimates, not a new valuation. See <a aria-label="PDF page 7 for the cash-flow table (PDF, 3.2 MB, opens in a new tab)" href="/downloads/finance/lennox-valuation-report.pdf#page=7" rel="noopener noreferrer" target="_blank">PDF page 7 for the cash-flow table<span aria-hidden="true" class="ap-glyph">↗</span><span class="ap-file-meta">PDF · 3.2 MB</span></a> and <a aria-label="pages 9–11 for the valuation methods (PDF, 3.2 MB, opens in a new tab)" href="/downloads/finance/lennox-valuation-report.pdf#page=9" rel="noopener noreferrer" target="_blank">pages 9–11 for the valuation methods<span aria-hidden="true" class="ap-glyph">↗</span><span class="ap-file-meta">PDF · 3.2 MB</span></a>. The original PDF is preserved; the cash-flow discrepancy remains a review item.</p></div>
+<nav aria-label="Related reading" class="ap-note-next"><a href="/notes/portfolio-feasibility">Next: When a portfolio brief has no feasible answer<span aria-hidden="true" class="ap-glyph">→</span></a><a href="/finance/ferrari#ferrari-explorer">Explore Ferrari’s DCF assumptions<span aria-hidden="true" class="ap-glyph">→</span></a></nav>
+</div>
+</div>
+</article>
+  </main>
+  <footer class="ap-footer">
+    <a class="ap-wordmark" href="/">Amir Pousti</a>
+    <span>London, 2026</span>
+    <nav aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/finance">Finance</a>
+      <a href="/engineering">Engineering</a>
+      <a href="/cv">CV</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <button class="ap-analytics-settings" id="analytics-settings" type="button" aria-controls="analytics-consent" aria-haspopup="dialog" hidden>Cookie settings</button>
+    </nav>
+  </footer>
+</body>
+</html>

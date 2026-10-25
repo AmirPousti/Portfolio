@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+  <title>Designing a lighter Formula Student suspension upright – Amir Pousti</title>
+  <meta name="description" content="A six-iteration suspension upright design study balancing mass, structural margin and manufacturing cost.">
+  <link rel="canonical" href="https://www.amirpousti.com/engineering/formula-student-upright">
+  <link rel="icon" href="/favicon.ico?v=393a34c421" sizes="16x16 32x32 48x48" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.svg?v=393a34c421" sizes="any" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=393a34c421" sizes="180x180">
+  <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css?v=8dcb887834">
+  <script type="module" src="/assets/vercel-analytics.mjs"></script>
+  <script type="module" src="/assets/google-analytics.mjs?v=944740d9be"></script>
+  <script type="module" src="/assets/site-ui.mjs?v=bc93c44b9f"></script>
+  <script type="module" src="/assets/upright-explorer.mjs?v=efab18ed5b"></script>
+  <script type="module" src="/assets/upright-video.mjs?v=12fd4ef074"></script>
+  <meta content="Designing a lighter Formula Student suspension upright – Amir Pousti" property="og:title"/>
+  <meta content="A six-iteration suspension upright design study balancing mass, structural margin and manufacturing cost." property="og:description"/>
+  <meta content="https://www.amirpousti.com/engineering/formula-student-upright" property="og:url"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Amir Pousti" property="og:site_name"/>
+  <meta content="en_GB" property="og:locale"/>
+  <meta content="https://www.amirpousti.com/assets/social-upright.jpg" property="og:image"/>
+  <meta content="1200" property="og:image:width"/>
+  <meta content="627" property="og:image:height"/>
+  <meta content="Amir Pousti – Formula Student upright engineering study with an original stress render" property="og:image:alt"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Designing a lighter Formula Student suspension upright – Amir Pousti" name="twitter:title"/>
+  <meta content="A six-iteration suspension upright design study balancing mass, structural margin and manufacturing cost." name="twitter:description"/>
+  <meta content="https://www.amirpousti.com/assets/social-upright.jpg" name="twitter:image"/>
+  <meta content="Amir Pousti – Formula Student upright engineering study with an original stress render" name="twitter:image:alt"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Amir Pousti","url":"https://www.amirpousti.com/","email":"mailto:amir@amirpousti.com","jobTitle":"Finance and engineering graduate","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Queen Mary University of London"},{"@type":"CollegeOrUniversity","name":"University College London"}],"sameAs":["https://www.linkedin.com/in/amirpousti"]}</script>
+</head>
+<body class="page-formula">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <dialog class="ap-consent" id="analytics-consent" aria-labelledby="cookie-heading" aria-describedby="cookie-description" hidden>
+    <div class="ap-consent-copy">
+      <h2 id="cookie-heading">Cookies</h2>
+      <p id="cookie-description">Optional cookies help me understand how this site is used.</p>
+      <a class="ap-consent-privacy" href="/privacy">Privacy policy</a>
+    </div>
+    <div class="ap-consent-actions">
+      <button type="button" id="analytics-allow">Accept</button>
+      <button type="button" id="analytics-decline">Decline</button>
+    </div>
+  </dialog>
+  <p class="sr-only" id="analytics-status" role="status"></p>
+  <header class="ap-header" id="site-header">
+    <a class="ap-wordmark" href="/" aria-label="Amir Pousti – home"><span class="ap-wordmark-full">Amir Pousti</span><span class="ap-wordmark-short" aria-hidden="true">AP</span></a>
+    <nav class="ap-nav" aria-label="Portfolio navigation"><a href="/finance">Finance</a><a href="/engineering" aria-current="true">Engineering</a><a href="/cv">CV</a><a href="/contact">Contact</a></nav>
+  </header>
+  <main id="main" tabindex="-1">
+<section aria-label="Formula Student case study" class="ap-page ap-case">
+<nav aria-label="Breadcrumb" class="ap-breadcrumb"><a href="/engineering">Engineering</a><span aria-hidden="true">/</span><span>Formula Student upright</span></nav><div class="ap-case-hero">
+<div>
+<p class="ap-eyebrow">Flagship project · Individual dissertation</p>
+<h1>Designing a lighter Formula Student suspension upright</h1>
+<p class="ap-deck">A simulation-led design study balancing mass, modelled structural margin, vehicle fit, manufacturability, cost and environmental impact for a Formula Student electric car.</p>
+<div aria-label="Project details" class="ap-case-meta">
+<div>
+<span>Role</span><strong>Individual dissertation</strong>
+</div>
+<div>
+<span>Tools</span><strong>MATLAB · SolidWorks · ANSYS · Granta EduPack</strong>
+</div>
+<div>
+<span>Status</span><strong>Modelled design · Not prototyped</strong>
+</div>
+</div>
+<div class="ap-actions ap-case-downloads">
+<a aria-label="Designing a lighter Formula Student suspension upright (PDF, 5.5 MB, opens in a new tab)" class="ap-action ap-action-primary" href="/downloads/engineering/formula-student-upright-report.pdf" rel="noopener noreferrer" target="_blank">Full report<span aria-hidden="true" class="ap-glyph">↗</span><span class="ap-file-meta">PDF · 5.5 MB</span></a>
+<a class="ap-action" href="#upright-film">Explore the assembly</a>
+</div>
+</div>
+<div class="ap-case-snapshot">
+<span>Best practical balance</span><strong>Iteration 5</strong><small>Apr 2025</small>
+</div>
+</div>
+<section aria-labelledby="upright-film-heading" class="ap-upright-film" id="upright-film">
+<h2 class="sr-only" id="upright-film-heading">From chassis to upright.</h2>
+<div class="ap-upright-film-stage">
+<div class="ap-upright-film-heading">
+<p class="ap-label">Formula Student · Design visualisation</p>
+<p id="upright-film-title">The whole system.</p>
+<p id="upright-film-copy">Start with the chassis. Every connection has a role.</p>
+</div>
+<video aria-describedby="upright-video-description upright-video-hint" aria-label="Exploded view of the Formula Student upright assembly" controls="" height="720" id="upright-video" muted="" playsinline="" poster="/assets/upright-assembly-poster.jpg" preload="metadata" width="1280">
+<source src="/assets/upright-assembly-scroll.mp4" type="video/mp4"/>
+<p>Your browser cannot play this video. <a href="/assets/upright-assembly-scroll.mp4">Open the assembly video</a>.</p>
+</video>
+<p class="sr-only" id="upright-video-description">A silent design visualisation moves from the full vehicle chassis to the front wheel, hub and upright, separating the assembly to show its components.</p>
+<div class="ap-upright-film-footer">
+<p id="upright-video-hint">Use the video controls to explore the assembly.</p>
+<div hidden="" id="upright-video-controls">
+<button id="upright-scroll-mode" type="button">Explore with scroll</button>
+</div>
+<a href="#upright-explorer">Compare the designs</a>
+</div>
+<progress aria-label="Video progress" id="upright-video-progress" max="1" value="0"></progress>
+</div>
+</section>
+<section aria-labelledby="upright-compare-heading" class="ap-explorer" id="upright-explorer">
+<div class="ap-explorer-heading">
+<div><p class="ap-eyebrow">Compare the designs</p><h2 id="upright-compare-heading">The lightest option has a cost.</h2></div>
+<p class="ap-label">Simulation &amp; cost estimates · Apr 2025</p>
+</div>
+<p class="ap-explorer-intro">Iteration 5 keeps most of the weight saving without Iteration 6’s larger machining bill. Compare the geometry, structural results and estimated cost together.</p>
+<form aria-label="Engineering comparison" class="ap-comparison-controls" hidden="" id="upright-controls">
+<label for="upright-reference">Show changes relative to</label>
+<select id="upright-reference" name="reference">
+<option value="baseline">Baseline</option>
+<option value="iteration-5">Iteration 5 · recommended</option>
+<option value="iteration-6">Iteration 6 · lightest</option>
+</select>
+<button class="ap-explorer-reset" type="reset">Reset comparison <span aria-hidden="true">↺</span></button>
+</form>
+<p class="ap-explorer-note ap-comparison-scroll-note">All three designs stay side by side. Scroll the table to compare on smaller screens.</p>
+<div aria-label="Baseline, Iteration 5 and Iteration 6 comparison" class="ap-table-scroll ap-comparison-scroll" role="region" tabindex="0">
+<table class="ap-comparison-table"><caption>Upright design comparison · source: Apr 2025 dissertation</caption><thead><tr><td></td><th scope="col"><span class="ap-design-status">Starting geometry</span><strong>Baseline</strong><img alt="Baseline upright: original ANSYS stress result" decoding="async" height="469" loading="lazy" src="/assets/upright-baseline.jpg" width="469"/></th><th class="ap-design-recommended" scope="col"><span class="ap-design-status">Recommended</span><strong>Iteration 5</strong><img alt="Iteration 5 upright: original ANSYS stress result" decoding="async" height="469" loading="lazy" src="/assets/upright-selected.jpg" width="469"/></th><th scope="col"><span class="ap-design-status">Lightest design</span><strong>Iteration 6</strong><img alt="Iteration 6 upright: original ANSYS stress result" decoding="async" height="469" loading="lazy" src="/assets/upright-final.jpg" width="469"/></th></tr></thead><tbody><tr><th scope="row">Mass</th><td><span>0.67248 kg</span><small data-delta="baseline:mass" hidden=""></small></td><td class="ap-design-recommended"><span>0.54852 kg</span><small data-delta="iteration-5:mass" hidden=""></small></td><td><span>0.53793 kg</span><small data-delta="iteration-6:mass" hidden=""></small></td></tr><tr><th scope="row">Max. deformation</th><td><span>0.06215 mm</span><small data-delta="baseline:deformation" hidden=""></small></td><td class="ap-design-recommended"><span>0.08923 mm</span><small data-delta="iteration-5:deformation" hidden=""></small></td><td><span>0.11245 mm</span><small data-delta="iteration-6:deformation" hidden=""></small></td></tr><tr><th scope="row">Safety factor<small>Threshold ≥ 2.0</small></th><td><span>13.51</span><small data-delta="baseline:safety" hidden=""></small></td><td class="ap-design-recommended"><span>4.80</span><small data-delta="iteration-5:safety" hidden=""></small></td><td><span>4.72</span><small data-delta="iteration-6:safety" hidden=""></small></td></tr><tr><th scope="row">Machining cost (est.)</th><td><span>£69.53</span><small data-delta="baseline:cost" hidden=""></small></td><td class="ap-design-recommended"><span>£75.53</span><small data-delta="iteration-5:cost" hidden=""></small></td><td><span>£110.29</span><small data-delta="iteration-6:cost" hidden=""></small></td></tr></tbody></table>
+</div>
+<p aria-atomic="true" aria-live="polite" class="sr-only" id="upright-announcement" role="status"></p>
+<div class="ap-comparison-decision">
+<p class="ap-label">Why Iteration 5</p>
+<p>Iteration 6 saves another <strong>10.59 g</strong>, but costs <strong>£34.76 more (+46%)</strong> to machine and increases maximum modelled deformation by <strong>26.0%</strong>. Both exceed the model’s 2.0 safety-factor threshold; Iteration 5 is the recommended practical balance.</p>
+</div>
+<p class="ap-explorer-note">ANSYS stress images use individual colour scales; compare geometry visually and numerical results in the table. These are simulations, with no physical, fatigue or track validation. Machining estimates include machine and technician time with VAT; stock, carriage, inspection, assembly and testing are excluded.</p>
+<a class="ap-text-link" href="#formula-iterations">See all six iterations and the method</a>
+<script id="upright-data" type="application/json">{"asOf":"April 2025","source":"/downloads/engineering/formula-student-upright-report.pdf","safetyThreshold":2,"designs":[{"id":"baseline","name":"Baseline","status":"Starting geometry","image":"upright-baseline.jpg","mass":0.67248,"deformation":0.06215,"safety":13.51,"cost":69.53},{"id":"iteration-5","name":"Iteration 5","status":"Recommended","image":"upright-selected.jpg","mass":0.54852,"deformation":0.08923,"safety":4.8,"cost":75.53},{"id":"iteration-6","name":"Iteration 6","status":"Lightest design","image":"upright-final.jpg","mass":0.53793,"deformation":0.11245,"safety":4.72,"cost":110.29}]}</script>
+</section>
+<div class="ap-case-layout">
+<nav aria-label="Formula Student case sections" class="ap-toc">
+<span>On this page</span>
+<a href="#formula-overview">01 · Overview</a><a href="#formula-constraints">02 · Scope</a><a href="#formula-loads">03 · Load model</a><a href="#formula-material">04 · Material selection</a><a href="#formula-mesh">05 · Numerical convergence</a><a href="#formula-iterations">06 · Design development</a><a href="#formula-manufacturing">07 · Manufacturing</a><a href="#formula-decision">08 · Recommendation</a><a href="#formula-lessons">09 · Decisions and lessons</a><a href="#formula-limitations">10 · Evidence boundary</a>
+</nav>
+<div class="ap-case-main">
+<section class="ap-case-section" id="formula-overview">
+<p class="ap-section-number">01 · Overview</p>
+<h2>The objective was optimisation – not simply weight reduction.</h2>
+<p>The upright connects the wheel hub to the suspension links and brake assembly. Reducing its mass can lower unsprung weight and improve vehicle response, but indiscriminate material removal can weaken load paths, increase deformation and make the component more difficult or expensive to machine.</p>
+<p>The study therefore asked how far the supplied baseline geometry could be redesigned while remaining structurally credible under the modelled load cases, compatible with the surrounding vehicle and practical for low-volume manufacture.</p>
+<div aria-label="Selected design results" class="ap-case-facts">
+<div>
+<span>Mass (Iteration 5)</span><strong>0.549 kg</strong><small>Iteration 5</small>
+</div>
+<div>
+<span>Mass reduction</span><strong>18.43%</strong><small>Versus baseline</small>
+</div>
+<div>
+<span>Safety factor</span><strong>4.80</strong><small>Target ≥ 2.0</small>
+</div>
+<div>
+<span>Machining cost (est.)</span><strong>£75.53</strong><small>Point-in-time estimate</small>
+</div>
+</div>
+<p class="ap-note"><strong>Why not headline the lightest version?</strong> Iteration 6 was the final and lightest simulated geometry at a 20.01% mass reduction. The additional 10.59 g saving beyond Iteration 5 came at a materially higher estimated machining cost, so Iteration 5 remained the recommended practical option.</p>
+</section>
+<section class="ap-case-section" id="formula-constraints">
+<p class="ap-section-number">02 · Scope</p>
+<h2>A constrained component inside a larger system.</h2>
+<div class="ap-case-split">
+<div>
+<h3>Design constraints</h3>
+<ul class="ap-case-list">
+<li>Maintain a minimum modelled factor of safety of 2.0.</li>
+<li>Preserve the supplied wheel, bearing, brake, wishbone and pushrod interfaces.</li>
+<li>Withstand combined vertical, braking and cornering load cases.</li>
+<li>Remain feasible for low-volume manufacture within a Formula Student budget.</li>
+</ul>
+</div>
+<div>
+<h3>My contribution and boundary</h3>
+<p>I developed the load calculations, material screen, CAD redesigns, mesh-convergence study, finite-element analyses, iteration logic and manufacturing-cost comparison.</p>
+<p>Queen Mary Formula Student supplied the baseline vehicle geometry and key vehicle parameters. The project did not include physical manufacture, fatigue testing or track validation.</p>
+</div>
+</div>
+</section>
+<section class="ap-case-section" id="formula-loads">
+<p class="ap-section-number">03 · Load model</p>
+<h2>From vehicle assumptions to component loads.</h2>
+<p>I translated vehicle-level assumptions into forces at the upright’s interfaces, then applied those forces as boundary conditions in ANSYS. The inputs represent design assumptions and supplied parameters – not measured track telemetry.</p>
+<div class="ap-process">
+<span>Vehicle assumptions</span><i>→</i><span>Braking &amp; cornering</span><i>→</i><span>Interface forces</span><i>→</i><span>FEA boundary conditions</span>
+</div>
+<div aria-label="Calculated design loads" class="ap-case-facts ap-case-facts-loads">
+<div>
+<span>Braking</span><strong>1,175 N</strong><small>Longitudinal</small>
+</div>
+<div>
+<span>Cornering</span><strong>1,469 N</strong><small>Lateral</small>
+</div>
+<div>
+<span>Vertical</span><strong>979 N</strong><small>Wheel load</small>
+</div>
+<div>
+<span>Pushrod</span><strong>1,959 N</strong><small>At 30°</small>
+</div>
+</div>
+<figure class="ap-evidence-figure ap-load-evidence">
+<img alt="Finite-element model showing braking, cornering, vertical, pushrod and wishbone loads applied to the upright" class="ap-evidence-image ap-upright-loads" decoding="async" height="469" loading="lazy" src="/assets/upright-loads.jpg" width="900"/>
+<figcaption>Calculated force locations on the supplied baseline geometry. Inputs included a 260 kg vehicle, 1.2g braking, 1.5g lateral acceleration and a 30° pushrod angle.</figcaption>
+</figure>
+</section>
+<section class="ap-case-section" id="formula-material">
+<p class="ap-section-number">04 · Material selection</p>
+<h2>Material choice was treated as a multi-variable decision.</h2>
+<p>The screening process considered specific stiffness, yield strength, fatigue-strength data, fracture toughness, machinability, cost and environmental impact. Aluminium 7075-T6 narrowly led the weighted decision matrix because it offered the strongest overall balance for a highly loaded, low-volume component.</p>
+<p class="ap-table-hint">Scroll the table horizontally to see all columns.</p>
+<div aria-label="Material decision table" class="ap-table-scroll ap-material-table-wrap" role="region" tabindex="0">
+<table class="ap-case-table ap-material-table">
+<thead><tr>
+<th scope="col">Candidate</th>
+<th scope="col">Weighted score</th>
+<th scope="col">Decision</th>
+</tr></thead>
+<tbody>
+<tr class="ap-table-selected">
+<td>Aluminium 7075-T6</td>
+<td>4.45</td>
+<td>Selected balance of strength, mass and manufacturability</td>
+</tr>
+<tr>
+<td>Titanium Ti-6Al-4V</td>
+<td>4.36</td>
+<td>Strong performance; cost and machining weighed against it</td>
+</tr>
+<tr>
+<td>Aluminium 6061-T6</td>
+<td>2.94</td>
+<td>More accessible, but lower strength for the application</td>
+</tr>
+<tr>
+<td>Magnesium EA55RS-T4</td>
+<td>2.73</td>
+<td>Low density; weaker overall feasibility score</td>
+</tr>
+<tr>
+<td>Nickel-Cu-Si M-25S</td>
+<td>2.17</td>
+<td>Lowest overall fit among the shortlisted candidates</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="ap-table-note">The report presents the overall scores but does not reproduce the detailed weighting calculation. Treat this as a project-specific screening exercise – not an independently reproducible or universal material ranking.</p>
+</section>
+<section class="ap-case-section" id="formula-mesh">
+<p class="ap-section-number">05 · Numerical convergence</p>
+<h2>Check mesh sensitivity before optimising the geometry.</h2>
+<p>Six meshes ranged from 14,078 to 1,138,160 elements. Stress and deformation began to stabilise above approximately 400,000 elements, so the later design iterations used a 0.75 mm mesh with 729,174 elements.</p>
+<div aria-label="Mesh convergence results" class="ap-case-facts">
+<div>
+<span>Mesh range</span><strong>14k–1.14m</strong><small>Elements</small>
+</div>
+<div>
+<span>Selected mesh</span><strong>729,174</strong><small>0.75 mm</small>
+</div>
+<div>
+<span>Deformation gap</span><strong>0.087%</strong><small>Versus finest</small>
+</div>
+<div>
+<span>Stress gap</span><strong>3.37%</strong><small>Versus finest</small>
+</div>
+</div>
+<div class="ap-mesh-chart-grid">
+<figure><figcaption>Stress convergence</figcaption><div aria-label="Maximum von Mises stress by finite-element count. The selected 0.75 mm mesh is marked in blue." class="ap-chart-scroll" role="region" tabindex="0"><svg aria-labelledby="formula-1-mesh-stress-title formula-1-mesh-stress-description" class="ap-chart-image ap-inline-chart" height="340" role="img" viewbox="0 0 600 340" width="600" xmlns="http://www.w3.org/2000/svg"><title id="formula-1-mesh-stress-title">Stress (MPa) by finite-element count</title><desc id="formula-1-mesh-stress-description">Six mesh refinements. The selected 0.75 mm mesh has 729,174 elements. Full numerical values are in the adjacent data table.</desc><style>text{font-family:inherit;font-size:var(--ap-chart-label-size,13px);fill:var(--ap-muted,#626268)}.grid{stroke:var(--ap-line,#dedee2);stroke-width:1}.series{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}</style><text x="102" y="25">Stress (MPa)</text><line class="grid" x1="102" x2="560" y1="276.0" y2="276.0"></line><text text-anchor="end" x="88" y="282.0">12.1</text><line class="grid" x1="102" x2="560" y1="168.5" y2="168.5"></line><text text-anchor="end" x="88" y="174.5">27.2</text><line class="grid" x1="102" x2="560" y1="61.0" y2="61.0"></line><text text-anchor="end" x="88" y="67.0">42.3</text><text text-anchor="middle" x="102.0" y="307">0</text><text text-anchor="middle" x="254.66666666666666" y="307">400k</text><text text-anchor="middle" x="407.3333333333333" y="307">800k</text><text text-anchor="middle" x="560.0" y="307">1.2m</text><text text-anchor="middle" x="330" y="337">Finite elements</text><path class="series" d="M 107.37 252.11 L 117.74 191.25 L 138.28 172.44 L 256.95 129.79 L 380.30 101.92 L 536.40 92.85" stroke="var(--ap-chart-ink,#3a3a3c)"></path><circle cx="107.37310333333333" cy="252.11111111111111" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><circle cx="117.73649833333333" cy="191.25132275132273" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><circle cx="138.28046999999998" cy="172.43882275132273" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><circle cx="256.951705" cy="129.79431216931215" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><circle cx="380.30141" cy="101.92394179894177" fill="var(--ap-accent,#0068d1)" r="6"></circle><circle cx="536.3977333333333" cy="92.85185185185182" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><text style="fill:var(--ap-accent,#0068d1)" text-anchor="end" x="372.30141" y="83.92394179894177">0.75 mm</text></svg></div><details class="ap-chart-data"><summary>View chart data</summary><div aria-label="Chart data table" class="ap-table-scroll" role="region" tabindex="0"><table><caption>Original mesh-convergence model data.</caption><thead><tr><th scope="col">Mesh (mm)</th><th scope="col">Finite elements</th><th scope="col">Stress (MPa)</th></tr></thead><tbody><tr><td>5</td><td>14,078</td><td>15.43</td></tr><tr><td>3</td><td>41,231</td><td>23.99</td></tr><tr><td>2</td><td>95,058</td><td>26.636</td></tr><tr><td>1</td><td>405,987</td><td>32.634</td></tr><tr><td>0.75 – selected</td><td>729,174</td><td>36.554</td></tr><tr><td>0.6</td><td>1,138,160</td><td>37.83</td></tr></tbody></table></div></details></figure>
+<figure><figcaption>Deformation convergence</figcaption><div aria-label="Maximum deformation by finite-element count. The selected 0.75 mm mesh is marked in blue." class="ap-chart-scroll" role="region" tabindex="0"><svg aria-labelledby="formula-2-mesh-deformation-title formula-2-mesh-deformation-description" class="ap-chart-image ap-inline-chart" height="340" role="img" viewbox="0 0 600 340" width="600" xmlns="http://www.w3.org/2000/svg"><title id="formula-2-mesh-deformation-title">Deformation (mm) by finite-element count</title><desc id="formula-2-mesh-deformation-description">Six mesh refinements. The selected 0.75 mm mesh has 729,174 elements. Full numerical values are in the adjacent data table.</desc><style>text{font-family:inherit;font-size:var(--ap-chart-label-size,13px);fill:var(--ap-muted,#626268)}.grid{stroke:var(--ap-line,#dedee2);stroke-width:1}.series{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}</style><text x="102" y="25">Deformation (mm)</text><line class="grid" x1="102" x2="560" y1="276.0" y2="276.0"></line><text text-anchor="end" x="88" y="282.0">0.0608</text><line class="grid" x1="102" x2="560" y1="168.50000000000045" y2="168.50000000000045"></line><text text-anchor="end" x="88" y="174.50000000000045">0.0616</text><line class="grid" x1="102" x2="560" y1="61.0" y2="61.0"></line><text text-anchor="end" x="88" y="67.0">0.0624</text><text text-anchor="middle" x="102.0" y="307">0</text><text text-anchor="middle" x="254.66666666666666" y="307">400k</text><text text-anchor="middle" x="407.3333333333333" y="307">800k</text><text text-anchor="middle" x="560.0" y="307">1.2m</text><text text-anchor="middle" x="330" y="337">Finite elements</text><path class="series" d="M 107.37 252.11 L 117.74 168.76 L 138.28 133.42 L 256.95 103.68 L 380.30 99.90 L 536.40 92.85" stroke="var(--ap-chart-ink,#3a3a3c)"></path><circle cx="107.37310333333333" cy="252.11111111111111" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><circle cx="117.73649833333333" cy="168.76412776412766" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><circle cx="138.28046999999998" cy="133.41665908332558" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><circle cx="256.951705" cy="103.67782934449596" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><circle cx="380.30141" cy="99.89525889525868" fill="var(--ap-accent,#0068d1)" r="6"></circle><circle cx="536.3977333333333" cy="92.85185185185185" fill="var(--ap-chart-ink,#3a3a3c)" r="4"></circle><text style="fill:var(--ap-accent,#0068d1)" text-anchor="end" x="372.30141" y="81.89525889525868">0.75 mm</text></svg></div><details class="ap-chart-data"><summary>View chart data</summary><div aria-label="Chart data table" class="ap-table-scroll" role="region" tabindex="0"><table><caption>Original mesh-convergence model data.</caption><thead><tr><th scope="col">Mesh (mm)</th><th scope="col">Finite elements</th><th scope="col">Deformation (mm)</th></tr></thead><tbody><tr><td>5</td><td>14,078</td><td>0.060978</td></tr><tr><td>3</td><td>41,231</td><td>0.061617</td></tr><tr><td>2</td><td>95,058</td><td>0.061888</td></tr><tr><td>1</td><td>405,987</td><td>0.062116</td></tr><tr><td>0.75 – selected</td><td>729,174</td><td>0.062145</td></tr><tr><td>0.6</td><td>1,138,160</td><td>0.062199</td></tr></tbody></table></div></details></figure>
+</div>
+<p class="ap-table-note">Under the modelled load case, the baseline geometry returned 36.55 MPa maximum von Mises stress, 0.06215 mm maximum deformation and a factor of safety of 13.51.</p>
+</section>
+<section class="ap-case-section" id="formula-iterations">
+<p class="ap-section-number">06 · Design development</p>
+<h2>Six iterations – and one useful failure.</h2>
+<p>The geometry developed through controlled material removal, an over-aggressive failed concept, structural reinforcement and local refinement. Iteration 3 reduced mass most aggressively but broke the safety requirement, forcing the next design to restore clearer load paths through truss-like reinforcement. Iteration 6 was the final and lightest simulated output; Iteration 5 was the recommended practical cost-performance option.</p>
+<div class="ap-iteration-row">
+<span>Base<br/><b>FOS 13.51</b></span><span>1<br/><b>10.69</b></span><span>2<br/><b>2.26</b></span><span class="ap-rejected">3<br/><b>1.29</b></span><span>4<br/><b>5.23</b></span><span class="ap-selected">5<br/><b>4.80</b></span><span>6<br/><b>4.72</b></span>
+</div>
+<div class="ap-iteration-gallery">
+<figure><img alt="Baseline upright finite-element stress result" class="ap-evidence-image ap-upright-baseline" decoding="async" height="469" loading="lazy" src="/assets/upright-baseline.jpg" width="469"/><figcaption><span>Baseline</span><strong>36.55 MPa</strong></figcaption></figure>
+<figure><img alt="Rejected third iteration finite-element deformation result" class="ap-evidence-image ap-upright-failed" decoding="async" height="469" loading="lazy" src="/assets/upright-failed.jpg" width="469"/><figcaption><span>Iteration 3 · rejected</span><strong>0.336 mm</strong></figcaption></figure>
+<figure><img alt="Recommended fifth iteration finite-element stress result" class="ap-evidence-image ap-upright-selected" decoding="async" height="469" loading="lazy" src="/assets/upright-selected.jpg" width="469"/><figcaption><span>Iteration 5 · selected</span><strong>102.92 MPa</strong></figcaption></figure>
+<figure><img alt="Sixth iteration finite-element stress result" class="ap-evidence-image ap-upright-final" decoding="async" height="469" loading="lazy" src="/assets/upright-final.jpg" width="469"/><figcaption><span>Iteration 6</span><strong>104.54 MPa</strong></figcaption></figure>
+</div>
+<p class="ap-table-hint">Scroll the table horizontally to see all columns.</p>
+<div aria-label="Design iteration results" class="ap-table-scroll ap-iteration-table-wrap" role="region" tabindex="0">
+<table class="ap-case-table ap-iteration-table">
+<thead><tr>
+<th scope="col">Version</th>
+<th scope="col">Mass</th>
+<th scope="col">Reduction</th>
+<th scope="col">Deformation</th>
+<th scope="col">Stress</th>
+<th scope="col">FOS</th>
+<th scope="col">Outcome</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td>0.67248 kg</td>
+<td> – </td>
+<td>0.06215 mm</td>
+<td>36.55 MPa</td>
+<td>13.51</td>
+<td>Reference</td>
+</tr>
+<tr>
+<td>Iteration 1</td>
+<td>0.64117 kg</td>
+<td>4.66%</td>
+<td>0.07511 mm</td>
+<td>46.19 MPa</td>
+<td>10.69</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>Iteration 2</td>
+<td>0.54458 kg</td>
+<td>19.02%</td>
+<td>0.23164 mm</td>
+<td>218.18 MPa</td>
+<td>2.26</td>
+<td>Pass, limited margin</td>
+</tr>
+<tr class="ap-table-rejected">
+<td>Iteration 3</td>
+<td>0.53378 kg</td>
+<td>20.63%</td>
+<td>0.33576 mm</td>
+<td>381.55 MPa</td>
+<td>1.29</td>
+<td>Rejected</td>
+</tr>
+<tr>
+<td>Iteration 4</td>
+<td>0.58479 kg</td>
+<td>13.04%</td>
+<td>0.11140 mm</td>
+<td>94.37 MPa</td>
+<td>5.23</td>
+<td>Reinforced</td>
+</tr>
+<tr class="ap-table-selected">
+<td>Iteration 5</td>
+<td>0.54852 kg</td>
+<td>18.43%</td>
+<td>0.08923 mm</td>
+<td>102.92 MPa</td>
+<td>4.80</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td>Iteration 6</td>
+<td>0.53793 kg</td>
+<td>20.01%</td>
+<td>0.11245 mm</td>
+<td>104.54 MPa</td>
+<td>4.72</td>
+<td>Final / lightest</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="ap-case-section" id="formula-manufacturing">
+<p class="ap-section-number">07 · Manufacturing</p>
+<h2>Performance had to remain practical to produce.</h2>
+<p>Casting, forging, additive manufacture and CNC machining were compared. CNC machining was selected because it suited the required tolerances, the 7075-T6 analytical material and low-volume production. Iteration 6 was estimated to require more setup, machining distance and technician time, producing a substantially higher cost estimate.</p>
+<div aria-label="Estimated machining cost by design version" class="ap-cost-bars">
+<div>
+<span>Baseline</span><i><b style="--ap-bar:63%"></b></i><strong>£69.53</strong>
+</div>
+<div>
+<span>Iteration 4</span><i><b style="--ap-bar:66%"></b></i><strong>£72.53</strong>
+</div>
+<div class="ap-cost-selected">
+<span>Iteration 5</span><i><b style="--ap-bar:68%"></b></i><strong>£75.53</strong>
+</div>
+<div>
+<span>Iteration 6</span><i><b style="--ap-bar:100%"></b></i><strong>£110.29</strong>
+</div>
+</div>
+<p class="ap-table-note">These figures combine estimated machine and technician time, including VAT. They exclude separately quoted raw stock, carriage, inspection, assembly, testing and validation. The analytical model used 7075-T6 properties, while the supplier quote referenced AW7075-T651 stock; that temper distinction would need to be reconciled before manufacture.</p>
+</section>
+<section class="ap-case-section ap-conclusion" id="formula-decision">
+<p class="ap-section-number">08 · Recommendation</p>
+<h2>The lightest design was not the strongest decision.</h2>
+<p>Iteration 6 reduced modelled mass by 20.01%, but saved only another 10.59 g relative to Iteration 5. That incremental saving increased estimated machining cost by £34.76 – approximately 46% – while modelled deformation rose from 0.08923 mm to 0.11245 mm.</p>
+<p>Iteration 5 therefore offered the more defensible cost-performance balance: an 18.43% modelled mass reduction, a factor of safety of 4.80, lower deformation than Iteration 6 and substantially lower estimated machining cost.</p>
+<div aria-label="Iteration 5 versus Iteration 6" class="ap-decision-facts">
+<div>
+<span>Extra saving</span><strong>10.59 g</strong>
+</div>
+<div>
+<span>Extra cost</span><strong>£34.76</strong>
+</div>
+<div>
+<span>Cost increase</span><strong>46%</strong>
+</div>
+<div>
+<span>Recommendation</span><strong>Iteration 5</strong>
+</div>
+</div>
+<div class="ap-decision-scale">
+<span>Iteration 5 · £75.53</span><i></i><span>Iteration 6 · £110.29</span>
+</div>
+</section>
+<section class="ap-case-section" id="formula-lessons">
+<p class="ap-section-number">09 · Decisions and lessons</p>
+<h2>Make the marginal trade-off visible.</h2>
+<dl class="ap-lessons">
+<div><dt>My contribution</dt><dd>I connected the load calculations, material selection, CAD iterations, mesh study and manufacturing estimates into one design comparison.</dd></div>
+<div><dt>Decision</dt><dd>I recommended Iteration 5 because the extra 10.59 g saved by Iteration 6 came with higher deformation and a £34.76 increase in estimated machining cost.</dd></div>
+<div><dt>Lesson</dt><dd>A stable simulation supports a comparison under the chosen assumptions. Physical validation needs separate evidence, particularly for repeated loads and the real suspension assembly.</dd></div>
+<div><dt>Next check</dt><dd>Fatigue analysis and prototype bench testing would test the design beyond its static finite-element results. These remain proposed work.</dd></div>
+</dl>
+</section>
+<section class="ap-case-section" id="formula-limitations">
+<p class="ap-section-number">10 · Evidence boundary</p>
+<h2>What the work demonstrates – and what remains unproven.</h2>
+<div class="ap-case-split ap-evidence-boundary">
+<div>
+<h3>Demonstrated in the study</h3>
+<ul class="ap-case-list">
+<li>Translation of a system-level problem into component loads and constraints.</li>
+<li>Numerical sensitivity checking before geometry optimisation.</li>
+<li>Rejection of an unsafe iteration rather than defending the lightest result.</li>
+<li>A clear recommendation balancing mass, safety, deformation and cost.</li>
+</ul>
+</div>
+<div>
+<h3>Not established by the study</h3>
+<ul class="ap-case-list">
+<li>No physical prototype, bench test, assembly test or track validation.</li>
+<li>Loads relied on supplied and assumed inputs because measured telemetry was unavailable.</li>
+<li>No component fatigue analysis or material testing.</li>
+<li>Directional manufacturing and environmental estimates rather than full production economics or LCA.</li>
+</ul>
+</div>
+</div>
+<div aria-label="Recommended next steps" class="ap-next-steps">
+<div>
+<span>01</span><strong>Fatigue model</strong><p>Test repeated-load durability and identify life-limiting regions.</p>
+</div>
+<div>
+<span>02</span><strong>Prototype &amp; bench test</strong><p>Compare measured stiffness and strain with the finite-element model.</p>
+</div>
+<div>
+<span>03</span><strong>Track validation</strong><p>Replace assumed loads with instrumented telemetry and refine the design.</p>
+</div>
+</div>
+<p class="ap-note">The results on this page are finite-element outputs under the stated load and boundary-condition assumptions. They are evidence of the engineering and decision process – not certification of a competition-ready component.</p>
+</section>
+</div>
+</div>
+<nav aria-label="Case study navigation" class="ap-case-end-nav">
+<a class="ap-text-link" href="/engineering"><span aria-hidden="true" class="ap-glyph ap-glyph-back">←</span>All engineering projects</a>
+<a class="ap-text-link" href="/finance/ferrari">Next: Ferrari: where scarcity drives value<span aria-hidden="true" class="ap-glyph">→</span></a>
+</nav>
+</section>
+  </main>
+  <footer class="ap-footer">
+    <a class="ap-wordmark" href="/">Amir Pousti</a>
+    <span>London, 2026</span>
+    <nav aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/finance">Finance</a>
+      <a href="/engineering">Engineering</a>
+      <a href="/cv">CV</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <button class="ap-analytics-settings" id="analytics-settings" type="button" aria-controls="analytics-consent" aria-haspopup="dialog" hidden>Cookie settings</button>
+    </nav>
+  </footer>
+</body>
+</html>
