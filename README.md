@@ -18,6 +18,7 @@ This is a static site with no build step. Vercel serves the files in this reposi
 | `assets/*.mjs` | Small scripts: the interactive explorers, the scroll-driven assembly film, cookie consent and analytics |
 | `assets/fonts/` | Geist (SIL Open Font License) |
 | `downloads/` | Reports, the Excel model and the CV PDF |
+| `api/scores.mjs` | The 404 game's leaderboard (a Vercel serverless function). Needs the `KV_REST_API_URL` and `KV_REST_API_TOKEN` variables that the connected Upstash Redis database provides; without them the page simply hides the board. Set `LEADERBOARD_ADMIN_KEY` to allow deleting a name with `DELETE /api/scores?name=…` and an `x-admin-key` header |
 | `vercel.json` | Security headers, caching and the one redirect |
 
 ## Making a change
