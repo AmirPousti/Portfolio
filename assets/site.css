@@ -704,7 +704,8 @@ g[data-node] rect { fill: var(--paper); stroke: var(--rule); rx: 8; }
 .ap-privacy-copy p + p { margin-top: 1em; }
 
 /* ---------- 404 easter egg ---------- */
-.ap-lost { margin-top: clamp(56px, 9vw, 112px); max-width: 760px; border-top: 1px solid var(--rule); padding-top: var(--s-5); }
+.ap-lost { margin-top: clamp(56px, 9vw, 112px); border-top: 1px solid var(--rule); padding-top: var(--s-5); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-6) var(--s-8); max-width: 1040px; }
+@media (min-width: 860px) { .ap-lost { grid-template-columns: minmax(0, 7fr) minmax(220px, 3fr); align-items: start; } }
 .ap-lost canvas { display: block; width: 100%; height: auto; cursor: pointer; border-radius: var(--radius-sm); touch-action: manipulation; }
 .ap-lost canvas:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 .ap-lost-bar { display: flex; justify-content: space-between; align-items: center; gap: var(--s-4); flex-wrap: wrap; margin-top: var(--s-3); }
@@ -712,6 +713,22 @@ g[data-node] rect { fill: var(--paper); stroke: var(--rule); rx: 8; }
 .ap-lost-start { font: inherit; font-size: .875rem; font-weight: 500; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
 .ap-lost-start:hover { color: var(--ink); border-color: var(--ink); }
 @media (hover: none) { .ap-lost-start { display: none; } }
+.ap-lost-board .ap-label { margin-bottom: 6px; }
+.ap-lost-board ol { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); font-size: .9375rem; }
+.ap-lost-board li { display: grid; grid-template-columns: 1.6em minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--rule-soft); margin: 0; }
+.ap-lost-board li span:first-child { color: var(--muted); font-variant-numeric: tabular-nums; }
+.ap-lost-board li span:nth-child(2) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
+.ap-lost-board li span:last-child { font-variant-numeric: tabular-nums; color: var(--text); }
+.ap-lost-board li.is-you span { font-weight: 600; color: var(--ink); }
+.ap-lost-board li.ap-lost-empty { display: block; color: var(--muted); }
+#lost-submit { margin-top: var(--s-4); }
+#lost-submit label { display: block; font-size: .9375rem; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+.ap-lost-submit-row { display: flex; gap: 8px; }
+.ap-lost-submit-row input { flex: 1; min-width: 0; font: inherit; font-size: .9375rem; padding: 8px 12px; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink); min-height: 40px; }
+.ap-lost-submit-row input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-color: var(--ink); }
+.ap-lost-submit-row button { font: inherit; font-size: .9375rem; font-weight: 500; padding: 0 14px; min-height: 40px; border-radius: var(--radius-sm); border: 1px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; }
+.ap-lost-submit-row button[disabled] { opacity: .5; cursor: default; }
+.ap-lost-note { font-size: .875rem; color: var(--muted); margin-top: var(--s-3); min-height: 1.4em; }
 
 /* ---------- Print ---------- */
 @media print {

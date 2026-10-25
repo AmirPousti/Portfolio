@@ -13,11 +13,11 @@
   <link rel="icon" href="/assets/favicon.svg?v=393a34c421" sizes="any" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=393a34c421" sizes="180x180">
   <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/site.css?v=a2c05e3ecd">
+  <link rel="stylesheet" href="/assets/site.css?v=cab02e71fc">
   <script type="module" src="/assets/vercel-analytics.mjs"></script>
   <script type="module" src="/assets/google-analytics.mjs?v=944740d9be"></script>
   <script type="module" src="/assets/site-ui.mjs?v=bc93c44b9f"></script>
-  <script type="module" src="/assets/lost.mjs?v=4de3a7abfe"></script>
+  <script type="module" src="/assets/lost.mjs?v=301501f95f"></script>
   <meta content="Page not found – Amir Pousti" property="og:title"/>
   <meta content="This page could not be found. Return to the portfolio, projects, CV or contact page." property="og:description"/>
   <meta content="https://www.amirpousti.com/404" property="og:url"/>
@@ -60,10 +60,24 @@
 <p class="ap-deck">The address may have changed. You can find the portfolio, case studies and CV from the navigation above.</p>
 <a class="ap-text-link" href="/"><span aria-hidden="true" class="ap-glyph ap-glyph-back">←</span>Back to home</a>
 <div class="ap-lost" id="lost-game">
+<div class="ap-lost-stage">
 <canvas aria-label="A small driving game. Press space or the up arrow to jump the cones; the distance is the score." height="150" id="lost-canvas" role="img" width="560"></canvas>
 <div class="ap-lost-bar">
 <p aria-live="polite" class="ap-lost-status" id="lost-status">Stuck here? Press space or tap the car.</p>
 <button class="ap-lost-start" id="lost-start" type="button">Press space</button>
+</div>
+</div>
+<div class="ap-lost-board" hidden="" id="lost-board">
+<p class="ap-label">Leaderboard</p>
+<ol aria-label="Top ten runs" id="lost-board-list"></ol>
+<form hidden="" id="lost-submit">
+<label for="lost-name">Put your run on the board as</label>
+<div class="ap-lost-submit-row">
+<input autocomplete="nickname" id="lost-name" maxlength="18" placeholder="Any name" required="" type="text"/>
+<button type="submit">Add</button>
+</div>
+</form>
+<p aria-live="polite" class="ap-lost-note" id="lost-board-note"></p>
 </div>
 </div></section>
   </main>
